@@ -7,7 +7,7 @@ $proprietaire = 'Car&Boat';
 $auteur = 'Christophe';
 $css = 'css.css';
 $footer = "&copy;2009 - $proprietaire";
-$titre = 'Bienvenue sur '.$projet;
+$titre = 'Recherche de BD';
 
 $menu = array();
 $menu['index.php']['fr'] = array('desc' => 'Accueil', 'title' => 'Accueil');
@@ -33,18 +33,35 @@ echo '<?xml version="' . $xmlVersion . '" encoding="' . $xmlEncoding . '"?>';
         <div id="Btop">
             <div id="topMenu">
                 <ul>
-                    <li><a href="index.php" class="on" title="<?php echo $menu['index.php'][$lang]['title']; ?>"><?php echo $menu['index.php'][$lang]['desc']; ?></a></li>
+                    <li><a href="index.php" title="<?php echo $menu['index.php'][$lang]['title']; ?>"><?php echo $menu['index.php'][$lang]['desc']; ?></a></li>
                     <li><a href="connexion.php" title="<?php echo $menu['connexion.php'][$lang]['title']; ?>"><?php echo $menu['connexion.php'][$lang]['desc']; ?></a></li>
-                    <li><a href="rechercheBd.php" title="<?php echo $menu['rechercheBd.php'][$lang]['title']; ?>"><?php echo $menu['rechercheBd.php'][$lang]['desc']; ?></a></li>
+                    <li><a href="rechercheBd.php" class="on" title="<?php echo $menu['rechercheBd.php'][$lang]['title']; ?>"><?php echo $menu['rechercheBd.php'][$lang]['desc']; ?></a></li>
                     <li><a href="panier.php" title="<?php echo $menu['panier.php'][$lang]['title']; ?>"><?php echo $menu['panier.php'][$lang]['desc']; ?></a></li>
                 </ul>
             </div>
         </div>
         <div id="Bmiddle">
             <h1><?= $titre ?></h1>
-         </div>
+            <form action="doBd.php" method="post">
+                <label>Référence :</label>
+                <div>
+                    <input type="text" name="ref" value="BD000001">
+                </div>				
+                <label>Langue :</label>
+                <div>
+                    <input type="radio" name="lang" value="fr" checked="checked"/> Français
+                    <input type="radio" name="lang" value="en"/> Anglais
+                </div>				
+                <label>Référence :</label><div>
+                    <select name="fond" size="0">
+                        <option value="ffc" style="background-color: #ffc">Jaune</option>
+                        <option value="fcc" style="background-color: #fcc">Rose</option>
+                    </select></div>
+                <input value="Rechercher" type="submit"/>
+            </form>
+        </div>
         <div id="Bbottom" class="clear">
-            <?php echo $footer;?>
+            <?php echo $footer; ?>
         </div>	
     </body>
 </html>
