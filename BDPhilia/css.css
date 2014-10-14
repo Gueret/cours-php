@@ -14,6 +14,8 @@ body	{
 }
 
 a	{
+        font: normal 14px Helvetica, Verdana, Arial, Sans-Serif;
+        font-weight: bold;
 	color: #333;
 	text-decoration: none;
 }
