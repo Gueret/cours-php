@@ -8,13 +8,13 @@
         <h1>Titre de la page 1</h1>
         <?php
 
-        // Déclaration des variables
+        // DÃ©claration des variables
         $nom = 'Braive';
         $prenom = 'Xavier';
-        $rue = 'rue de la Sirène';
+        $rue = 'rue de la Sirï¿½ne';
         $no = 2;
         $cp = 40000;
-        $ville = 'Liège';
+        $ville = 'Liï¿½ge';
         $fTotalHt = 457;
 
         // Tableau full PHP
@@ -30,7 +30,7 @@
         echo '</tr>';
         echo '<tr>';
         echo '<th>Montant de la commande HT</th>';
-        echo "<td>$fTotalHt €</td>";
+        echo "<td>$fTotalHt ï¿½</td>";
         echo '</tr>';
         echo '</tbody>';
         echo '</table>';
@@ -50,7 +50,7 @@
                 </tr>
                 <tr>
                     <th>Montant de la commande HT</th>
-                    <td><?php echo "$fTotalHt €"; ?></td>
+                    <td><?php echo "$fTotalHt ï¿½"; ?></td>
                 </tr>
             </tbody>
         </table>
