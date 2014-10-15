@@ -29,8 +29,12 @@ $libelle['auteur'] = array('fr' => 'Auteur', 'en' => 'Author');
 $libelle['editeur'] = array('fr' => 'Editeur', 'en' => 'Publisher');
 $libelle['prix'] = array('fr' => 'Prix', 'en' => 'Price');
 $libelle['sortie'] = array('fr' => 'Sortie', 'en' => 'Released');
-$libelle['TVA'] = array('fr' => "TVA ".TVA.' %', 'en' => "TVA ".TVA.' %');
+$libelle['TVA'] = array('fr' => "TVA " . TVA . ' %', 'en' => "TVA " . TVA . ' %');
 $libelle['prixTTC'] = array('fr' => 'Prix TTC', 'en' => 'Price TTC');
+ 
+$cond = array();
+$cond['fr'] = 'Vous n\'avez pas validé les conditions générales de vente';
+$cond['en'] = 'You did not validate the general terms of sale';
 
 $livres = array();
 $livres['BD000001'] = array(
@@ -97,6 +101,7 @@ $fond = $_POST['fond'];
 $ht = $livres[$ref]['prix'];
 $tva = $ht * TVA / 100;
 $ttc = $ht + $tva;
+$cgv = (isset($_POST['cgv'])) ? true : false;
 
 echo '<?xml version="' . $xmlVersion . '" encoding="' . $xmlEncoding . '"?>';
 ?>
@@ -122,39 +127,43 @@ echo '<?xml version="' . $xmlVersion . '" encoding="' . $xmlEncoding . '"?>';
         <div id="Bmiddle">
             <form action="rechercheBd.php" method="post">
                 <h1><?= $livres[$ref]['titre'] ?></h1>
-                <table style="background-color: #<?php echo $fond; ?>" width="100%">
-                    <tr>
-                        <td rowspan="7" style="text-align: left">
-                            <img src="img/bd/<?php echo $ref; ?>.jpg" style="width:150px; height:200px; "/>
-                        </td>
-                        <th><?php echo $libelle['titre'][$lang]; ?></th>
-                        <td><?php echo $livres[$ref]['titre']; ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo $libelle['auteur'][$lang]; ?></th>
-                        <td><?php echo $livres[$ref]['auteur']; ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo $libelle['editeur'][$lang]; ?></th>
-                        <td><?php echo $livres[$ref]['editeur']; ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo $libelle['sortie'][$lang]; ?></th>
-                        <td><?php echo $livres[$ref]['sortie']; ?></td>
-                    </tr>
-                    <tr>
-                        <th><?php echo $libelle['prix'][$lang]; ?></th>
-                        <td><?php echo $livres[$ref]['prix']; ?> &euro;</td>
-                    </tr>
-                    <tr>
-                        <th><?php echo $libelle['TVA'][$lang]; ?></th>
-                        <td><?php echo $tva; ?> &euro;</td>
-                    </tr>
-                    <tr>
-                        <th><?php echo $libelle['prixTTC'][$lang]; ?></th>
-                        <td><?php echo $ttc; ?> &euro;</td>
-                    </tr>
-                </table>
+                <?php if ($cgv) : ?>
+                    <table style="background-color: #<?php echo $fond; ?>" width="100%">
+                        <tr>
+                            <td rowspan="7" style="text-align: left">
+                                <img src="img/bd/<?php echo $ref; ?>.jpg" style="width:150px; height:200px; "/>
+                            </td>
+                            <th><?php echo $libelle['titre'][$lang]; ?></th>
+                            <td><?php echo $livres[$ref]['titre']; ?></td>
+                        </tr>
+                        <tr>
+                            <th><?php echo $libelle['auteur'][$lang]; ?></th>
+                            <td><?php echo $livres[$ref]['auteur']; ?></td>
+                        </tr>
+                        <tr>
+                            <th><?php echo $libelle['editeur'][$lang]; ?></th>
+                            <td><?php echo $livres[$ref]['editeur']; ?></td>
+                        </tr>
+                        <tr>
+                            <th><?php echo $libelle['sortie'][$lang]; ?></th>
+                            <td><?php echo $livres[$ref]['sortie']; ?></td>
+                        </tr>
+                        <tr>
+                            <th><?php echo $libelle['prix'][$lang]; ?></th>
+                            <td><?php echo $livres[$ref]['prix']; ?> &euro;</td>
+                        </tr>
+                        <tr>
+                            <th><?php echo $libelle['TVA'][$lang]; ?></th>
+                            <td><?php echo $tva; ?> &euro;</td>
+                        </tr>
+                        <tr>
+                            <th><?php echo $libelle['prixTTC'][$lang]; ?></th>
+                            <td><?php echo $ttc; ?> &euro;</td>
+                        </tr>
+                    </table>                
+                <?php else : ?>
+                    <div class="important"> <?php echo $cond[$lang].' - '.$livres[$ref]['titre']; ?></div>
+                <?php endif; ?>
                 <input value="Retour" type="submit"/>
             </form>
         </div>

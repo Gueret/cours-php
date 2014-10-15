@@ -104,6 +104,11 @@ form label {
 	width: 100px;
 	height: 30px;
 }
+form label.long {
+	float: left;
+	width: 250px;
+	height: 30px;
+}
 form label + div {
 	height: 30px;
 }

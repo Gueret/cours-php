@@ -19,6 +19,10 @@ $menu['rechercheBd.php']['en'] = array('desc' => 'Search', 'title' => 'List');
 $menu['panier.php']['fr'] = array('desc' => 'Panier', 'title' => 'Panier d\'achat');
 $menu['panier.php']['en'] = array('desc' => 'Cart', 'title' => 'Shopping Cart');
 
+$cond = array();
+$cond['fr'] = 'J\'accepte les conditions générales de vente';
+$cond['en'] = 'I accept general terms of sale';
+
 echo '<?xml version="' . $xmlVersion . '" encoding="' . $xmlEncoding . '"?>';
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -52,11 +56,17 @@ echo '<?xml version="' . $xmlVersion . '" encoding="' . $xmlEncoding . '"?>';
                     <input type="radio" name="lang" value="fr" checked="checked"/> Français
                     <input type="radio" name="lang" value="en"/> Anglais
                 </div>				
-                <label>Référence :</label><div>
+                <label>Référence :</label>
+                <div>
                     <select name="fond" size="0">
                         <option value="ffc" style="background-color: #ffc">Jaune</option>
                         <option value="fcc" style="background-color: #fcc">Rose</option>
-                    </select></div>
+                    </select>
+                </div>
+                <div>
+                    <label for="cgv" class="long"><?php echo $cond[$lang]; ?></label>
+                    <input type="checkbox" name="cgv" value="ok">
+                </div>
                 <input value="Rechercher" type="submit"/>
             </form>
         </div>
