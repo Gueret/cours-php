@@ -211,7 +211,7 @@ echo '<?xml version="' . $xmlVersion . '" encoding="' . $xmlEncoding . '"?>';
                             $msg .= '<td style="text-align: center"><img src="img/bd/' . $id . '.jpg" style="width: 20px;"/></td>';
                             $msg .= '<td>' . $livre['titre'] . '</td>';
                             $msg .= '<td class="right">' . $livre['stock'] . '</td>';
-                            $msg .= '<td class="right">' . $livre['prix'] . '</td>';
+                            $msg .= '<td class="right">' . $livre['prix'] . ' &euro;</td>';
                             $msg .= '<td class="right">' . $totLig . '  &euro;</td>';
                             $msg .= '</tr>';
                             $nb++;
